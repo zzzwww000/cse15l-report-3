@@ -19,10 +19,11 @@ These commands puts the text files to a single .txt file for some modifications
 
 **Commands**:
 
+---
 -e exp : Specifies expression with this option, and can be used by adding multiple values after each -e.
 This will help us reduce the operating time by adding several searches together.
 
----
+
 ``` grep -e "History" -e "Intro" all_texts.txt > e_1.txt ```
 ```
 all_texts.txt:written_2/travel_guides/berlitz1/HistoryDublin.txt
@@ -111,12 +112,12 @@ written_2/travel_guides/berlitz2/China-WhatToDo.txt
 written_2/travel_guides/berlitz2/China-WhereToGo.txt
 
 ```
-
+---
 
 -v : This prints out all the lines that do not matches the pattern. 
 This command can be used to facilitate the searching process by excluding unnecessary lines, or searching for a lot of files in without certain contents
 
----
+
 ``` grep -v "travel_guides" all_texts.txt > v_1.txt ```
 
 See Output Results Below:
@@ -197,4 +198,133 @@ written_2/travel_guides/berlitz1/HistoryMalaysia.txt
 written_2/travel_guides/berlitz1/HistoryMallorca.txt
 written_2/travel_guides/berlitz1/JungleMalaysia.txt
 
+```
+
+---
+-o : Print only the matched parts of a matching line, with each such part on a separate output line. 
+I would personally say this part should be used in collaboration with -e to get combined results to facilitate searching
+Also, it can be used to check the existance of a certain string
+
+```grep -o "HistoryEgypt" all_texts.txt > o_1.txt```
+
+```
+HistoryEgypt
+```
+
+```grep -o "History" all_ber1.txt > o_2.txt```
+
+```
+History
+History
+History
+History
+History
+History
+History
+History
+History
+History
+History
+History
+History
+History
+History
+History
+History
+History
+History
+History
+History
+History
+```
+
+---
+-h : Display the matched lines, but do not display the filenames. This faciliates the searching process by only giving necessary information when a user only needs that part of line in order to do citation or paraphrazing.
+
+```grep -h -r "Lucayans" written_2 > h_1.txt```
+```
+Centuries before the arrival of Columbus, a peaceful Amerindian people who called themselves the Luccucairi had settled in the Bahamas. Originally from South America, they had traveled up through the Caribbean islands, surviving by cultivating modest crops and from what they caught from sea and shore. Nothing in the experience of these gentle people could have prepared them for the arrival of the Pinta, the Niña, and the Santa Maria at San Salvador on 12 October 1492. Columbus believed that he had reached the East Indies and mistakenly called these people Indians. We know them today as the Lucayans. Columbus claimed the island and others in the Bahamas for his royal Spanish patrons, but not finding the gold and other riches he was seeking, he stayed for only two weeks before sailing towards Cuba.
+The Spaniards never bothered to settle in the Bahamas, but the number of shipwrecks attest that their galleons frequently passed through the archipelago en route to and from the Caribbean, Florida, Bermuda, and their home ports. On Eleuthera the explorers dug a fresh-water well — at a spot now known as “Spanish Wells” — which was used to replenish the supplies of water on their ships before they began the long journey back to Europe with their cargoes of South American gold. As for the Lucayans, within 25 years all of them, perhaps some 30,000 people, were removed from the Bahamas to work — and die — in Spanish gold mines and on farms and pearl fisheries on Hispaniola (Haiti), Cuba, and elsewhere in the Caribbean.
+```
+
+```grep -h -v -e "non-fiction" -e "berlitz1" all_texts.txt >h_2.txt```
+```
+written_2/travel_guides/berlitz2/Algarve-History.txt
+written_2/travel_guides/berlitz2/Algarve-Intro.txt
+written_2/travel_guides/berlitz2/Algarve-WhatToDo.txt
+written_2/travel_guides/berlitz2/Algarve-WhereToGo.txt
+written_2/travel_guides/berlitz2/Amsterdam-History.txt
+written_2/travel_guides/berlitz2/Amsterdam-Intro.txt
+written_2/travel_guides/berlitz2/Amsterdam-WhatToDo.txt
+written_2/travel_guides/berlitz2/Amsterdam-WhereToGo.txt
+written_2/travel_guides/berlitz2/Athens-History.txt
+written_2/travel_guides/berlitz2/Athens-Intro.txt
+written_2/travel_guides/berlitz2/Athens-WhatToDo.txt
+written_2/travel_guides/berlitz2/Athens-WhereToGo.txt
+written_2/travel_guides/berlitz2/Bahamas-History.txt
+written_2/travel_guides/berlitz2/Bahamas-Intro.txt
+written_2/travel_guides/berlitz2/Bahamas-WhatToDo.txt
+written_2/travel_guides/berlitz2/Bahamas-WhereToGo.txt
+written_2/travel_guides/berlitz2/Bali-History.txt
+written_2/travel_guides/berlitz2/Bali-WhatToDo.txt
+written_2/travel_guides/berlitz2/Bali-WhereToGo.txt
+written_2/travel_guides/berlitz2/Barcelona-History.txt
+written_2/travel_guides/berlitz2/Barcelona-WhatToDo.txt
+written_2/travel_guides/berlitz2/Barcelona-WhereToGo.txt
+written_2/travel_guides/berlitz2/Beijing-History.txt
+written_2/travel_guides/berlitz2/Beijing-WhatToDo.txt
+written_2/travel_guides/berlitz2/Beijing-WhereToGo.txt
+written_2/travel_guides/berlitz2/Berlin-History.txt
+written_2/travel_guides/berlitz2/Berlin-WhatToDo.txt
+written_2/travel_guides/berlitz2/Berlin-WhereToGo.txt
+written_2/travel_guides/berlitz2/Bermuda-history.txt
+written_2/travel_guides/berlitz2/Bermuda-WhatToDo.txt
+written_2/travel_guides/berlitz2/Bermuda-WhereToGo.txt
+written_2/travel_guides/berlitz2/Boston-WhereToGo.txt
+written_2/travel_guides/berlitz2/Budapest-History.txt
+written_2/travel_guides/berlitz2/Budapest-WhatToDo.txt
+written_2/travel_guides/berlitz2/Budapest-WhereoGo.txt
+written_2/travel_guides/berlitz2/California-History.txt
+written_2/travel_guides/berlitz2/California-WhatToDo.txt
+written_2/travel_guides/berlitz2/California-WhereToGo.txt
+written_2/travel_guides/berlitz2/Canada-History.txt
+written_2/travel_guides/berlitz2/Canada-WhereToGo.txt
+written_2/travel_guides/berlitz2/CanaryIslands-History.txt
+written_2/travel_guides/berlitz2/CanaryIslands-WhatToDo.txt
+written_2/travel_guides/berlitz2/CanaryIslands-WhereToGo.txt
+written_2/travel_guides/berlitz2/Cancun-History.txt
+written_2/travel_guides/berlitz2/Cancun-WhatToDo.txt
+written_2/travel_guides/berlitz2/Cancun-WhereToGo.txt
+written_2/travel_guides/berlitz2/China-History.txt
+written_2/travel_guides/berlitz2/China-WhatToDo.txt
+written_2/travel_guides/berlitz2/China-WhereToGo.txt
+written_2/travel_guides/berlitz2/Costa-History.txt
+written_2/travel_guides/berlitz2/Costa-WhatToDo.txt
+written_2/travel_guides/berlitz2/Costa-WhereToGo.txt
+written_2/travel_guides/berlitz2/CostaBlanca-History.txt
+written_2/travel_guides/berlitz2/CostaBlanca-WhatToDo.txt
+written_2/travel_guides/berlitz2/Crete-History.txt
+written_2/travel_guides/berlitz2/Crete-WhatToDo.txt
+written_2/travel_guides/berlitz2/Crete-WhereToGo.txt
+written_2/travel_guides/berlitz2/CstaBlanca-WhereToGo.txt
+written_2/travel_guides/berlitz2/Cuba-History.txt
+written_2/travel_guides/berlitz2/Cuba-WhatToDo.txt
+written_2/travel_guides/berlitz2/Cuba-WhereToGo.txt
+written_2/travel_guides/berlitz2/Nepal-History.txt
+written_2/travel_guides/berlitz2/Nepal-WhatToDo.txt
+written_2/travel_guides/berlitz2/Nepal-WhereToGo.txt
+written_2/travel_guides/berlitz2/NewOrleans-History.txt
+written_2/travel_guides/berlitz2/Paris-WhatToDo.txt
+written_2/travel_guides/berlitz2/Paris-WhereToGo.txt
+written_2/travel_guides/berlitz2/Poland-History.txt
+written_2/travel_guides/berlitz2/Poland-WhatToDo.txt
+written_2/travel_guides/berlitz2/Portugal-History.txt
+written_2/travel_guides/berlitz2/Portugal-WhatToDo.txt
+written_2/travel_guides/berlitz2/Portugal-WhereToGo.txt
+written_2/travel_guides/berlitz2/PuertoRico-History.txt
+written_2/travel_guides/berlitz2/PuertoRico-WhatToDo.txt
+written_2/travel_guides/berlitz2/PuertoRico-WhereToGo.txt
+written_2/travel_guides/berlitz2/Vallarta-History.txt
+written_2/travel_guides/berlitz2/Vallarta-WhatToDo.txt
+written_2/travel_guides/berlitz2/Vallarta-WhereToGo.txt
 ```
